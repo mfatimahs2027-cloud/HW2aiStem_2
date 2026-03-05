@@ -1,0 +1,438 @@
+/* ====================================
+   LAYER 1 — GLOBAL STYLES & LAYOUT
+==================================== */
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* SMOOTH SCROLLING */
+html {
+  scroll-behavior: smooth;
+}
+
+/* BODY TYPOGRAPHY */
+body {
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background-color: #0d0b12;
+  color: #e6e0ff;
+  line-height: 1.6;
+  transition: background 0.4s ease, color 0.4s ease;
+
+  /* PURPLE GLOW */
+  box-shadow: 0 0 40px 10px #b44bff inset;
+}
+
+/* CONTAINER */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* SECTION SPACING */
+.section {
+  padding: 60px 0;
+  position: relative;
+}
+
+/* ANIMATED SECTION DIVIDER */
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 60%;
+  height: 3px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, #b44bff, transparent);
+  animation: glowLine 3s infinite ease-in-out;
+  border-radius: 50px;
+}
+
+@keyframes glowLine {
+  0% { opacity: 0.3; box-shadow: 0 0 10px #b44bff; }
+  50% { opacity: 1; box-shadow: 0 0 25px #d9a6ff; }
+  100% { opacity: 0.3; box-shadow: 0 0 10px #b44bff; }
+}
+
+/* BUTTONS */
+button,
+.button,
+.back-btn {
+  background: #ffffff;
+  color: #1a1a1a;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+button:hover,
+.button:hover,
+.back-btn:hover {
+  transform: scale(1.05);
+  background: #b44bff;
+  color: white;
+  box-shadow: 0 0 15px #b44bff;
+}
+
+/* HEADER — NOW GLOWS PURPLE */
+.site-header {
+  background: #15121f;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(180, 120, 255, 0.4);
+  box-shadow: 0 0 25px rgba(180, 120, 255, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO */
+.logo a {
+  color: #c9a8ff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* NAVIGATION */
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.main-nav a {
+  color: #e6e0ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: #c9a8ff;
+}
+
+/* MOBILE HEADER */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .main-nav ul {
+    gap: 15px;
+  }
+}
+
+/* ====================================
+   LAYER 2 — HOME PAGE STYLING
+==================================== */
+
+.slide-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.slide {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: 0.3s ease;
+}
+
+/* STRONGER SLIDE HOVER GLOW */
+.slide:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 25px rgba(180, 120, 255, 0.6);
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* SLIDER TITLE HOVER GLOW */
+.slide-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.slide:hover .slide-title {
+  color: #d9a6ff;
+  text-shadow: 0 0 10px #b44bff, 0 0 20px #d9a6ff;
+  transform: translateY(-5px);
+}
+
+/* ABOUT PREVIEW */
+.about-content {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+  }
+}
+
+/* SERVICES */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.service-card {
+  background: #1a1625;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid rgba(180, 120, 255, 0.2);
+  transition: 0.3s ease;
+}
+
+.service-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px #b44bff;
+}
+
+/* GALLERY PREVIEW */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 8px;
+  transition: 0.4s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(180, 120, 255, 0.8);
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+}
+
+.cta h2 {
+  margin-bottom: 10px;
+}
+
+/* ====================================
+   LAYER 3 — PAGE SECTIONS (BIG CATS, GOATS, SHARKS)
+==================================== */
+
+.page-container {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  padding: 40px;
+}
+
+.page-container img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+
+  /* ANIMATIONS */
+  animation: fadeIn 1.2s ease forwards, floatUp 1.2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(20px); }
+  to { transform: translateY(0); }
+}
+
+/* LISTS */
+.page-container ul {
+  text-align: left;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* ====================================
+   CONTACT PAGE — UPGRADED STYLING
+==================================== */
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(180, 120, 255, 0.2);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.contact-form:hover {
+  box-shadow: 0 0 25px rgba(180, 120, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(180, 120, 255, 0.3);
+  background: #1a1625;
+  color: #e6e0ff;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(200, 150, 255, 0.9);
+  box-shadow: 0 0 15px rgba(180, 120, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+textarea {
+  height: 140px;
+  resize: vertical;
+}
+
+.contact-form button {
+  padding: 12px 22px;
+  background: purple;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #b300b3;
+  box-shadow: 0 0 18px rgba(180, 120, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+/* ====================================
+   THEME TOGGLE BUTTON
+==================================== */
+
+.theme-toggle {
+  margin-left: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+/* PURPLE THEME MODE */
+body.purple-theme {
+  background-color: #e6d6ff;
+  color: black;
+}
+
+/* ====================================
+   GLOBAL ANIMATIONS
+==================================== */
+
+.page-load {
+  opacity: 0;
+  transform: scale(0.92);
+  animation: pageLoadAnim 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes pageLoadAnim {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-up {
+  transform: translateY(60px);
+}
+
+.slide-left {
+  transform: translateX(-80px);
+}
+
+.slide-right {
+  transform: translateX(80px);
+}
+
+.fade-in {
+  transform: scale(0.9);
+}
+
+/* ====================================
+   FOOTER
+==================================== */
+
+.site-footer {
+  background: #15121f;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+}
